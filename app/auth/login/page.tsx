@@ -1,7 +1,13 @@
 import LoginForm from "@/app/components/form/LoginForm";
 import React from "react";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import { redirect } from "next/navigation";
 
-function page() {
+async function page() {
+  const currentUser = await getCurrentUser();
+  if (currentUser) {
+    return redirect("/");
+  }
   return (
     <div className="flex flex-col h-screen justify-center items-center">
       <div className="mb-10">
