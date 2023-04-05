@@ -13,8 +13,11 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      authorization:
-        "https://accounts.google.com/o/oauth2/auth?response_type=code&prompt=consent",
+      authorization: {
+        params: {
+          prompt: "login",
+        },
+      },
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID as string,
