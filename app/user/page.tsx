@@ -1,9 +1,11 @@
 import React from "react";
 
-export default async function Home() {
+async function page() {
   return (
     <div className="p-10 font-light text-md">
-      <p>** this is can be access by public</p>
+      ** this page can only access if user logged in!
     </div>
   );
 }
+
+export default page;
