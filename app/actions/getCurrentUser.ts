@@ -42,12 +42,3 @@ export default async function getCurrentUser() {
     return null;
   }
 }
-
-// Exclude keys from user
-function exclude(user: any, keys: any) {
-  for (let key of keys) {
-    delete user[key];
-  }
-
-  return user;
-}
