@@ -28,11 +28,10 @@ function LoginForm() {
   const handleFormSubmit = (data: TLogin) => {
     signIn("credentials", {
       ...data,
-      redirect: false,
     }).then((callback) => {
       if (callback?.ok) {
         toast.success("Logged in");
-        router.refresh();
+        router.push("/");
       }
 
       if (callback?.error) {

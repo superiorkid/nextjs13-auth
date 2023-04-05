@@ -1,11 +1,14 @@
+import { SafeUser } from "@/app/types";
 import Link from "next/link";
 import React from "react";
+import { signOut } from "next-auth/react";
 
 type pageProps = {
   openMobileMenu: boolean;
+  currentUser?: SafeUser | null;
 };
 
-function MobileNavItem({ openMobileMenu }: pageProps) {
+function MobileNavItem({ openMobileMenu, currentUser }: pageProps) {
   return (
     <div
       className={`flex flex-col md:hidden w-full bg-neutral-50 ${
@@ -23,12 +26,29 @@ function MobileNavItem({ openMobileMenu }: pageProps) {
           Admin Page
         </Link>
         <hr />
-        <Link href="/auth/login" className="block hover:text-orange-500">
-          Login
-        </Link>
-        <Link href="/auth/register" className="block hover:text-orange-500">
-          Sign Up
-        </Link>
+
+        {!currentUser ? (
+          <>
+            <Link href="/auth/login" className="block hover:text-orange-500">
+              Login
+            </Link>
+            <Link href="/auth/register" className="block hover:text-orange-500">
+              Sign Up
+            </Link>
+          </>
+        ) : (
+          <>
+            <button className="border-l-4 border-blue-700 pl-1 py-">
+              <span>{currentUser.email}</span>
+            </button>
+            <button
+              className="block hover:text-red-500"
+              onClick={() => signOut()}
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

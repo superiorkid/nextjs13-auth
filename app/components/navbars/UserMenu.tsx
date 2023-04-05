@@ -17,9 +17,11 @@ function UserMenu({ currentUser }: PageProps) {
     <div className="hidden md:block md:space-x-5">
       {currentUser ? (
         <>
-          <button>you logged in using {currentUser.name}</button>
+          <button className="border-l-4 border-blue-700 pl-1 py-1">
+            <span>{currentUser.email}</span>
+          </button>
           <button
-            className="font-semibold px-3 py-2 bg-yellow-500 text-yellow-900 rounded-xl hover:bg-yellow-600"
+            className="font-semibold px-3 py-2 bg-red-500 text-yellow-900 rounded-xl hover:bg-yellow-600"
             onClick={() => {
               signOut();
               toast.success("Log out successfully");

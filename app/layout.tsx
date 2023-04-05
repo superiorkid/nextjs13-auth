@@ -1,7 +1,7 @@
 import Container from "./components/Container";
 import Navbar from "./components/navbars/Navbar";
 import { Roboto } from "next/font/google";
-import ToastProvider from "@/providers/ToastProvider";
+import ToastProvider from "@/app/providers/ToastProvider";
 
 import "./globals.css";
 import getCurrentUser from "@/app/actions/getCurrentUser";

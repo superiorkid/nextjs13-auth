@@ -61,7 +61,10 @@ function Navbar({ currentUser }: PageProps) {
 
         {/* mobile menu */}
       </div>
-      <MobileNavItem openMobileMenu={openMobileMenu} />
+      <MobileNavItem
+        openMobileMenu={openMobileMenu}
+        currentUser={currentUser}
+      />
     </>
   );
 }

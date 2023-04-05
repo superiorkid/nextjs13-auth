@@ -15,19 +15,22 @@ export default async function getCurrentUser() {
       return null;
     }
 
-    const user = await prisma.user.findUnique({
+    const currentUser = await prisma.user.findUnique({
       where: {
         email: session?.user?.email as string,
       },
+      select: {
+        name: true,
+        email: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
+        emailVerified: true,
+        image: true,
+      },
     });
 
-    if (!user) return null;
-
-    // exclude id & password
-    const currentUser: Exclude<User, "id" | "password"> = exclude(user, [
-      "id",
-      "password",
-    ]);
+    if (!currentUser) return null;
 
     return {
       ...currentUser,
