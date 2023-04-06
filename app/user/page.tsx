@@ -11,7 +11,7 @@ async function page() {
   return (
     <div className="p-10 font-light text-md">
       {!currentUser ? (
-        <p className="error-waring">
+        <p className="error-warning">
           You are not authorized to view this page.
         </p>
       ) : (

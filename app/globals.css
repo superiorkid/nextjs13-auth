@@ -6,6 +6,6 @@
   @apply text-green-900 bg-green-200 p-5 rounded-md;
 }
 
-.error-waring {
+.error-warning {
   @apply text-red-900 bg-red-200 p-5 rounded-md;
 }

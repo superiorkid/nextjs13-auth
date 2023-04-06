@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const schema = z
   .object({
@@ -82,7 +82,7 @@ function LoginForm() {
         </button>
         <button
           className="bg-black text-white py-2 rounded-md"
-          onClick={() => signIn("github")}
+          onClick={() => signIn("github", { redirect: false })}
         >
           Continue with Github
         </button>
